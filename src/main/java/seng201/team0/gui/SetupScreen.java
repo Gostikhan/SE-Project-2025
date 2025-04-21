@@ -82,6 +82,10 @@ public class SetupScreen {
             System.out.println("No car selected.");
             return;
         }
+        if (game.getOwnedCars().size() >= 3){
+            System.out.println("Can only purchase only 3 or less cars.");
+            return;
+        }
         if (game.canPurchase(selectedCar)) {
             game.purchaseCar(selectedCar);
             System.out.println("Purchased: " + selectedCar.getCarName());

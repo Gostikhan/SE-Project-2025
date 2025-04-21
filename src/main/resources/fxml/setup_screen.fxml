@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.SetupScreen">
+   <children>
+      <GridPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="220.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Gear Shift! What is your name?" GridPane.columnSpan="2">
+               <font>
+                  <Font name="Rockwell" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <TextField fx:id="username" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets right="10.0" top="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How many races would you like in a season?" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Rockwell" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Slider fx:id="raceAmount" blockIncrement="5.0" majorTickUnit="5.0" max="15.0" min="5.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="10.0" top="20.0" />
+               </GridPane.margin>
+            </Slider>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a difficulty." GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Rockwell" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Button fx:id="easyDifficulty" mnemonicParsing="false" onAction="#onEasyPressed" text="Easy" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="15.0" top="3.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="hardDifficulty" mnemonicParsing="false" onAction="#onHardPressed" text="Hard" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="85.0" top="3.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please purchase up to 3 cars." GridPane.columnSpan="2" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="180.0" left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Button fx:id="carOne" mnemonicParsing="false" onAction="#onCarOnePressed" text="Car 1" GridPane.rowIndex="3">
+               <padding>
+                  <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+               </padding>
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="10.0" top="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="carTwo" mnemonicParsing="false" onAction="#onCarTwoPressed" text="Car 2" GridPane.rowIndex="3">
+               <padding>
+                  <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+               </padding>
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="100.0" top="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="carThree" mnemonicParsing="false" onAction="#onCarThreePressed" text="Car 3" GridPane.columnSpan="2" GridPane.rowIndex="3">
+               <padding>
+                  <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+               </padding>
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="190.0" top="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="carFour" mnemonicParsing="false" onAction="#onCarFourPressed" text="Car 4" GridPane.rowIndex="3">
+               <padding>
+                  <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+               </padding>
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" top="110.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="carFive" mnemonicParsing="false" onAction="#onCarFivePressed" text="Car 5" GridPane.rowIndex="3">
+               <padding>
+                  <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+               </padding>
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="100.0" top="110.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="carSix" mnemonicParsing="false" onAction="#onCarSixPressed" text="Car 6" GridPane.columnSpan="2" GridPane.rowIndex="3">
+               <padding>
+                  <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+               </padding>
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="190.0" top="110.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="next" mnemonicParsing="false" onAction="#onContinuePressed" text="Continue" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Rockwell" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="25.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="purchaseCar" mnemonicParsing="false" onAction="#onPurchasePressed" text="Purchase" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="35.0" top="80.0" />
+               </GridPane.margin>
+            </Button>
+            <Label text="balance amnt" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="32.0" />
+               </GridPane.margin>
+            </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="37.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Purchased Cars:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="40.0" top="110.0" />
+               </GridPane.margin>
+            </Text>
+            <Label text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" top="170.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" top="200.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" top="140.0" />
+               </GridPane.margin>
+            </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Car Stats:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="160.0" left="60.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Rockwell" size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="statSpeed" text="Speed:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="120.0" left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="statHandling" text="Handling:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="90.0" left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="statReliability" text="Reliability:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="statFuelEconomy" prefWidth="96.0" text="Fuel Economy:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="statPrice" text="Price:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Rockwell" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

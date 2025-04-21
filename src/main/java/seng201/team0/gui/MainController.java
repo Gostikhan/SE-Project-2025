@@ -1,10 +1,14 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng201.team0.services.CounterService;
+import seng201.team0.services.GameEnvironment;
 
 /**
  * Controller for the main.fxml window
@@ -19,6 +23,8 @@ public class MainController {
     private Button defaultButton;
 
     private CounterService counterService;
+    private GameEnvironment game;
+    private Stage stage;
 
     /**
      * Initialize the window
@@ -26,19 +32,27 @@ public class MainController {
      * @param stage Top level container for this window
      */
     public void init(Stage stage) {
-        counterService = new CounterService();
+        this.stage = stage;
+        this.counterService = new CounterService();
+        this.game = new GameEnvironment(); // Create shared game state
     }
 
     /**
      * Method to call when our counter button is clicked
-     *
      */
     @FXML
     public void onButtonClicked() {
-        System.out.println("Button has been clicked");
-        counterService.incrementCounter();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/setup_screen.fxml"));
+            Parent root = loader.load();
 
-        int count = counterService.getCurrentCount();
-        defaultLabel.setText(Integer.toString(count));
+            SetupScreen controller = loader.getController();
+            controller.init(game); // Pass game state to setup screen
+
+            stage.setScene(new Scene(root, 600, 400));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+

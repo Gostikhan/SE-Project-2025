@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.SetupScreen">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.SetupScreen">
    <children>
       <GridPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <columnConstraints>
@@ -172,7 +172,7 @@
                   <Insets left="35.0" top="80.0" />
                </GridPane.margin>
             </Button>
-            <Label text="balance amnt" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label fx:id="balanceLabel" text="balance amnt" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font name="Rockwell" size="14.0" />
                </font>

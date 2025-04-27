@@ -8,6 +8,7 @@ import seng201.team0.gui.MainWindow;
  */
 public class App {
 
+
     /**
      * Entry point which runs the javaFX application
      * Due to how JavaFX works we must call MainWindow.launchWrapper() from here,
@@ -17,4 +18,5 @@ public class App {
     public static void main(String[] args) {
         MainWindow.launchWrapper(args);
     }
+
 }

@@ -25,7 +25,7 @@ public class StartScreen {
             SetupScreen controller = loader.getController();
             controller.init(game);
 
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 620, 400));
         } catch (Exception e) {
             e.printStackTrace();
         }

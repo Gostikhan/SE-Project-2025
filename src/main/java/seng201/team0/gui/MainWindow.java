@@ -27,6 +27,7 @@ public class MainWindow extends Application {
         //Parent root = baseLoader.load();
         Parent root = loader.load();
 
+
         //MainController baseController = baseLoader.getController();
         //baseController.init(primaryStage);
         StartScreen controller = loader.getController();
@@ -35,6 +36,7 @@ public class MainWindow extends Application {
         primaryStage.setTitle("Gear Shift!");
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

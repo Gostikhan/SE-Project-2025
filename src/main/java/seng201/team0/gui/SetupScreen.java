@@ -82,6 +82,7 @@ public class SetupScreen {
     public void onPurchasePressed() {
         if (selectedCar == null) {
             System.out.println("No car selected.");
+            showNoCarPurchaseAlert();
             return;
         }
         if (game.getOwnedCars().size() >= 3){
@@ -134,13 +135,29 @@ public class SetupScreen {
         alert.setContentText("Can only purchase only 3 or less cars.");
         alert.showAndWait();
     }
+    public void showPlayerStats() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Player Stats");
+        alert.setHeaderText(null);
+        // Combine all content into a single string with newlines
+        String content = "Setup complete:\n"
+                + "Name: " + game.getPlayerName() + "\n"
+                + "Races: " + game.getSeasonLength() + "\n"
+                + "Difficulty: " + game.getDifficulty() + "\n"
+                + "Cars Owned: " + game.getOwnedCars().size();
+
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
     @FXML
     public void onContinuePressed() {
+
         String name = username.getText().trim();
         if (name.length() < 3 || name.length() > 15 || !name.matches("[a-zA-Z0-9 ]+")) {
             System.out.println("Invalid name. Must be 3–15 letters, no special characters.");
-            // ChatGPT was used to help write the above 2 lines of code
             showInvalidNameAlert();
+            // ChatGPT was used to help write the above 2 lines of code
             return;
         }
         if (game.getOwnedCars().isEmpty()) {
@@ -155,6 +172,7 @@ public class SetupScreen {
         System.out.println("Races: " + game.getSeasonLength());
         System.out.println("Difficulty: " + game.getDifficulty());
         System.out.println("Cars Owned: " + game.getOwnedCars().size());
+        showPlayerStats();
 
         // TODO: Load the main game screen here
     }

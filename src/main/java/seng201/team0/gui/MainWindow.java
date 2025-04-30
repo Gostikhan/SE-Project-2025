@@ -22,17 +22,11 @@ public class MainWindow extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/start_screen.fxml"));
-        //Parent root = baseLoader.load();
         Parent root = loader.load();
-
-
-        //MainController baseController = baseLoader.getController();
-        //baseController.init(primaryStage);
         StartScreen controller = loader.getController();
         controller.init(primaryStage, new GameEnvironment());
-
         primaryStage.setTitle("Gear Shift!");
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);

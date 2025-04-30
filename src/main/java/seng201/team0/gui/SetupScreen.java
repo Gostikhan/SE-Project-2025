@@ -3,6 +3,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import seng201.team0.models.Car;
 import seng201.team0.services.GameEnvironment;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class SetupScreen {
     @FXML
@@ -84,6 +86,7 @@ public class SetupScreen {
         }
         if (game.getOwnedCars().size() >= 3){
             System.out.println("Can only purchase only 3 or less cars.");
+            showMaxCarPurchaseAlert();
             return;
         }
         if (game.canPurchase(selectedCar)) {
@@ -92,19 +95,57 @@ public class SetupScreen {
             updateBalance();
         } else {
             System.out.println("Cannot purchase this car.");
+            showCannotPurchaseAlert();
         }
     }
-
+    //ALERTS
+    public void showCannotPurchaseAlert() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Insufficient funds");
+        alert.setHeaderText(null);
+        alert.setContentText("Cannot purchase this car.");
+        alert.showAndWait();
+    }
+    public void showNoCarPurchaseAlert() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("No vehicle selected");
+        alert.setHeaderText(null);
+        alert.setContentText("No vehicle selected.");
+        alert.showAndWait();
+    }
+    public void showInvalidNameAlert() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Invalid Username");
+        alert.setHeaderText(null);
+        alert.setContentText("Name must be 3–15 letters long and contain no special characters.");
+        alert.showAndWait();
+    }
+    public void showMustPurchaseAlert() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Must purchase a vehicle");
+        alert.setHeaderText(null);
+        alert.setContentText("You must purchase at least one car.");
+        alert.showAndWait();
+    }
+    public void showMaxCarPurchaseAlert() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Max cars purchase");
+        alert.setHeaderText(null);
+        alert.setContentText("Can only purchase only 3 or less cars.");
+        alert.showAndWait();
+    }
     @FXML
     public void onContinuePressed() {
         String name = username.getText().trim();
         if (name.length() < 3 || name.length() > 15 || !name.matches("[a-zA-Z0-9 ]+")) {
             System.out.println("Invalid name. Must be 3–15 letters, no special characters.");
             // ChatGPT was used to help write the above 2 lines of code
+            showInvalidNameAlert();
             return;
         }
         if (game.getOwnedCars().isEmpty()) {
             System.out.println("You must purchase at least one car.");
+            showMustPurchaseAlert();
             return;
         }
         game.setPlayerName(name);

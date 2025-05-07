@@ -35,7 +35,7 @@ public class MainWindow extends Application {
     }
 
     /**
-     * Launches the FXML application, this must be called from another class (in this cass App.java) otherwise JavaFX
+     * Launches the FXML application, this must be called from another class (in this class App.java) otherwise JavaFX
      * errors out and does not run
      * @param args command line arguments
      */

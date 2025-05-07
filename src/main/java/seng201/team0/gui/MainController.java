@@ -31,7 +31,7 @@ public class MainController {
      *
      * @param stage Top level container for this window
      */
-    public void init(Stage stage) {
+    public void init(Stage stage, GameEnvironment game) {
         this.stage = stage;
         this.counterService = new CounterService();
         this.game = new GameEnvironment(); // Create shared game state
@@ -47,7 +47,7 @@ public class MainController {
             Parent root = loader.load();
 
             SetupScreen controller = loader.getController();
-            controller.init(game); // Pass game state to setup screen
+            controller.init(game, stage);
 
             stage.setScene(new Scene(root, 600, 400));
         } catch (Exception e) {

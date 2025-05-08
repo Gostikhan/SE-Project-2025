@@ -1,6 +1,7 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import seng201.team0.models.Car;
 import seng201.team0.models.CarParts;
@@ -134,6 +135,6 @@ public class GarageScreen {
         Parent root = loader.load();
         RaceScreen controller = loader.getController();
         controller.init(game, stage);
-        stage.getScene().setRoot(root);
+        stage.setScene(new Scene(root));
     }
 }

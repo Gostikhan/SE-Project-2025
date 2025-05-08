@@ -37,6 +37,8 @@ public class SetupScreen {
         balanceLabel.setText("$" + game.getBalance());
     }
 
+
+
     //Difficulty
     @FXML
     public void onEasyPressed() {
@@ -109,6 +111,7 @@ public class SetupScreen {
         game.purchaseCar(selectedCar);
         markCarAsPurchased(selectedCar);
         updateBalance();
+
     }
 
     //Continue And Back Buttons
@@ -128,10 +131,12 @@ public class SetupScreen {
     }
     @FXML
     public void onBackPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_game.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/start_screen.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
     }
+
+
 
     //Alert
     private void showAlert(String message) {

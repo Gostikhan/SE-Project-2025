@@ -117,12 +117,20 @@ public class SetupScreen {
     //Continue And Back Buttons
     @FXML
     public void onContinuePressed() throws IOException {
-        if (username.getText().trim().isEmpty() || game.getOwnedCars().isEmpty()) {
-            showAlert("You must enter your name and purchase at least 1 car.");
+        String name = username.getText().trim();
+        if (name.length() < 3 || name.length() > 15 || !name.matches("[a-zA-Z0-9 ]+")) {
+            showAlert("Invalid name. Must be 3–15 letters, no special characters.");
+            // ChatGPT was used to help write the above 2 lines of code
             return;
         }
+        if (game.getOwnedCars().isEmpty()) {
+            showAlert("You must purchase at least one car.");
+            return;
+        }
+
         game.setPlayerName(username.getText().trim());
         game.setSeasonLength((int) raceAmount.getValue());
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/shop.fxml"));
         Parent root = loader.load();
         ShopScreen controller = loader.getController();
@@ -133,6 +141,8 @@ public class SetupScreen {
     public void onBackPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/start_screen.fxml"));
         Parent root = loader.load();
+        StartScreen controller = loader.getController();
+        controller.init(stage, new GameEnvironment());
         stage.setScene(new Scene(root));
     }
 

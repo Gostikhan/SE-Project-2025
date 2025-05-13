@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import seng201.team0.models.Car;
 import seng201.team0.models.CarParts;
+import seng201.team0.models.RaceRoute;
 import seng201.team0.services.GameEnvironment;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,10 @@ import java.io.IOException;
 
 public class RaceScreen {
     public void init(GameEnvironment game, Stage stage) {
+        Car playerCar = game.getRacingCar();
+
+
     }
+
 }
 //Still needs to be completed, only added to remove errors in GarageScreen controller

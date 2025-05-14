@@ -17,11 +17,34 @@ public class RaceMechanics {
         double time = 0;
         double distanceCovered = 0;
         double distancePerFuelStop = totalDistance / (fuelStops + 1);
-
         int currentStop = 0;
         boolean carBrokeDown = false;
         boolean refueled;
+        boolean carRetired = false;
 
-        return null; //just for now to escape errors
+        while (distanceCovered < totalDistance ||  time < race.getHours()) {
+            if (random.nextDouble() < (1 - adjustReliability / 100)) {
+                carBrokeDown = true;
+                if (random.nextBoolean()) {
+                    time += 0.5;
+                    System.out.println("Car broke down");
+                }
+                else {
+                    carRetired = true;
+                    System.out.println("Car retired");
+                    break;
+                }
+            }
+            if (fuelRange <= 0) {
+                carRetired = true;
+                System.out.println("Car ran out of fuel");
+                break;
+            }
+            if (carRetired || carBrokeDown){
+                return new RaceResult(false, "Did not finish the race", -1, 0);
+            }
+
+        }
+        return new RaceResult(true, "Finished the race", 1, 10000);
     }
 }

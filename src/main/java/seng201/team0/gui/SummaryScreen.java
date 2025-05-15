@@ -4,9 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng201.team0.services.GameEnvironment;
-//Controller for the Summary Screen
-//Allows the player to see their name, season length, average placing and total prize money won
-//Allows the player to exit the game
+
+/**
+ * Controller for the Summary Screen
+ * Allows the player to see their name, season length, average placing and total prize money won
+ * Allows the player to exit the game
+ */
 public class SummaryScreen {
 
     @FXML private Label nameLabel; //Label that shows the player's name
@@ -18,14 +21,20 @@ public class SummaryScreen {
     private GameEnvironment game;
     private Stage stage;
 
-    //Loads the summary screen
+    /**
+     * Loads the summary screen
+     * @param game
+     * @param stage
+     */
     public void init(GameEnvironment game, Stage stage) {
         this.game = game;
         this.stage = stage;
         updateSummary();
     }
 
-    //Updates the labels on the summary screen
+    /**
+     * Updates the labels on the summary screen
+     */
     private void updateSummary() {
         nameLabel.setText(game.getPlayerName());
         seasonLengthLabel.setText(String.valueOf(game.getSeasonLength()));
@@ -34,7 +43,9 @@ public class SummaryScreen {
         totalPrizeMoneyWonLabel.setText("$" + game.getBalance());
     }
 
-    //Button that allows the player to exit the game
+    /**
+     * Button that allows the player to exit the game
+     */
     @FXML
     public void onExitGamePressed() {
         stage.close();

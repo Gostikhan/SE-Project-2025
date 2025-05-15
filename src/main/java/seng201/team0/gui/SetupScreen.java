@@ -9,9 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import java.io.IOException;
-//Controller for the Setup Screen
-//Allows the player to set their name, season length, buy cars and view available cars' stats
+
+/**
+ * Controller for the Setup Screen
+ * Allows the player to set their name, season length, buy cars and view available cars' stats
+ */
 public class SetupScreen {
+    @FXML private Button easyDifficulty;
+    @FXML private Button hardDifficulty;
     @FXML private TextField username; //TextField for the player to enter their username
     @FXML private Slider raceAmount; //Slider for the player to select season length
     @FXML private Label statSpeed; //Label for a cars speed
@@ -28,30 +33,50 @@ public class SetupScreen {
     private Car selectedCar;
     private Stage stage;
 
-    //Loads the setup screen
+    /**
+     * Loads the setup screen
+     * @param game
+     * @param stage
+     */
     public void init(GameEnvironment game, Stage stage) {
         this.game = game;
         this.stage = stage;
         updateBalance();
     }
+
+    /**
+     * Updates the balance of the player
+     */
     private void updateBalance() {
         balanceLabel.setText("$" + game.getBalance());
     }
 
-    //What happens when the easy difficulty button is pressed
+    /**
+     * What happens when the easy difficulty button is pressed
+     */
     @FXML
     public void onEasyPressed() {
         game.setDifficulty("Easy");
         updateBalance();
+        easyDifficulty.setDisable(true);
+        hardDifficulty.setDisable(true);
     }
-    //What happens when the hard difficulty button is pressed
+
+    /**
+     * What happens when the hard difficulty button is pressed
+     */
     @FXML
     public void onHardPressed() {
         game.setDifficulty("Hard");
         updateBalance();
+        hardDifficulty.setDisable(true);
+        easyDifficulty.setDisable(true);
     }
 
-    //Allows the player to see available cars
+    /**
+     * Allows the player to see available cars
+     * @param car Car's stats from Car class
+     */
     private void showCarStats(Car car) {
         selectedCar = car;
         statSpeed.setText("Speed: " + car.getSpeed());
@@ -60,7 +85,11 @@ public class SetupScreen {
         statFuelEconomy.setText("Fuel Economy: " + car.getFuelEconomy());
         statPrice.setText("Price: $" + car.getCost());
     }
-    //Marks cars as purchased after the player has purchased them
+
+    /**
+     * Marks cars as purchased after the player has purchased them
+     * @param car car constructor
+     */
     private void markCarAsPurchased(Car car) {
         if (purchasedCar1.getText().equals("N/A")) {
             purchasedCar1.setText(car.getCarName());
@@ -70,38 +99,58 @@ public class SetupScreen {
             purchasedCar3.setText(car.getCarName());
         }
     }
-    //Button that shows car 1's stats when it is pressed
+
+    /**
+     * Button that shows car 1's stats when it is pressed
+     */
     @FXML
     public void onCarOnePressed() {
         showCarStats(new Car("Car 1", 100, 80, 90, 400, 3500));
     }
-    //Button that shows car 2's stats when it is pressed
+
+    /**
+     * Button that shows car 2's stats when it is pressed
+     */
     @FXML
     public void onCarTwoPressed() {
         showCarStats(new Car("Car 2", 115, 70, 90, 350, 4000));
     }
-    //Button that shows car 3's stats when it is pressed
+
+    /**
+     * Button that shows car 3's stats when it is pressed
+     */
     @FXML
     public void onCarThreePressed() {
         showCarStats(new Car("Car 3", 85, 90, 75, 300, 3000));
     }
-    //Button that shows car 4's stats when it is pressed
+
+    /**
+     * Button that shows car 4's stats when it is pressed
+     */
     @FXML
     public void onCarFourPressed() {
         showCarStats(new Car("Car 4", 100, 85, 75, 370, 3800));
     }
-    //Button that shows car 5's stats when it is pressed
+
+    /**
+     * Button that shows car 5's stats when it is pressed
+     */
     @FXML
     public void onCarFivePressed() {
         showCarStats(new Car("Car 5", 85, 75, 75, 420, 3200));
     }
-    //Button that shows car 6's stats when it is pressed
+
+    /**
+     * Button that shows car 6's stats when it is pressed
+     */
     @FXML
     public void onCarSixPressed() {
         showCarStats(new Car("Car 6", 115, 82, 50, 390, 3600));
     }
 
-    //Button that allows a player to purchase a car
+    /**
+     * Button that allows a player to purchase a car
+     */
     @FXML
     public void onPurchasePressed() {
         if (selectedCar == null) {
@@ -122,13 +171,15 @@ public class SetupScreen {
 
     }
 
-    //Button that allows a player to continue to the race screen
+    /**ChatGPT was used to make sure player has a valid name
+     * Button that allows a player to continue to the race screen
+     * @throws IOException throws exception if something goes wrong
+     */
     @FXML
     public void onContinuePressed() throws IOException {
         String name = username.getText().trim();
         if (name.length() < 3 || name.length() > 15 || !name.matches("[a-zA-Z0-9 ]+")) {
             showAlert("Invalid name. Must be 3–15 letters, no special characters.");
-            // ChatGPT was used to help write the above 2 lines of code
             return;
         }
         if (game.getOwnedCars().isEmpty()) {
@@ -143,7 +194,11 @@ public class SetupScreen {
         controller.init(game, stage);
         stage.setScene(new Scene(root));
     }
-    //Button that allows a player to go back to the start screen
+
+    /**
+     * Button that allows a player to go back to the start screen
+     * @throws IOException throws exception if something goes wrong
+     */
     @FXML
     public void onBackPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/start_screen.fxml"));
@@ -153,7 +208,11 @@ public class SetupScreen {
         stage.setScene(new Scene(root));
     }
 
-    //Shows an alert if the player hasn't correctly selected a name, selected a car or purchased any cars
+
+    /**
+     * Shows an alert if the player hasn't correctly selected a name, selected a car or purchased any cars
+     * @param message alert message
+     */
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Input Error");

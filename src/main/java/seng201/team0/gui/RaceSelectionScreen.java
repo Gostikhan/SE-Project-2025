@@ -11,8 +11,11 @@ import seng201.team0.services.GameEnvironment;
 
 import java.io.IOException;
 import java.util.List;
-//Controller for the Race Selection screen
-//Allows the player to see available races, select a race, select route and view route descriptions
+
+/**
+ * Controller for the Race Selection screen
+ * Allows the player to see available races, select a race, select route and view route descriptions
+ */
 public class RaceSelectionScreen {
 
     @FXML private Label durationLabel; //Label for the race duration
@@ -27,7 +30,11 @@ public class RaceSelectionScreen {
     private Race selectedRace;
     private RaceRoute selectedRoute;
 
-    //Loads the race selection screen
+    /**
+     * Loads the race selection screen
+     * @param game
+     * @param stage
+     */
     public void init(GameEnvironment game, Stage stage) {
         this.game = game;
         this.stage = stage;
@@ -36,7 +43,10 @@ public class RaceSelectionScreen {
         showRace(0);
     }
 
-    //Shows available races to the player
+    /**
+     * Shows available races to the player
+     * @param index
+     */
     private void showRace(int index) {
         if (index >= races.size()) return;
         selectedRace = races.get(index);
@@ -51,7 +61,11 @@ public class RaceSelectionScreen {
         selectedRoute = null;
     }
 
-    //Formats the route description
+    /**
+     * Formats the route description
+     * @param route
+     * @return returns race details
+     */
     private String formatRoute(RaceRoute route) {
         return route.getRaceDescription() + ": " +
                 route.getRaceDistance() + "km, " +
@@ -59,34 +73,50 @@ public class RaceSelectionScreen {
                 String.format("%.1f", route.getRaceDifficulty());
     }
 
-    //Button that allows the player to select race 1
+    /**
+     * Button that allows the player to select race 1
+     */
     @FXML
     public void onRace1Pressed() {
         showRace(0);
     }
-    //Button that allows the player to select race 2
+
+    /**
+     * Button that allows the player to select race 2
+     */
     @FXML
     public void onRace2Pressed() {
         showRace(1);
     }
-    //Button that allows the player to select race 3
+
+    /**
+     * Button that allows the player to select race 3
+     */
     @FXML
     public void onRace3Pressed() {
         showRace(2);
     }
 
-    //Button that allows the player to select route 1
+    /**
+     * Button that allows the player to select route 1
+     */
     @FXML
     public void onRoute1Pressed() {
         selectedRoute = selectedRace.getRoutes().get(0);
     }
-    //Button that allows the player to select route 2
+
+    /**
+     * Button that allows the player to select route 2
+     */
     @FXML
     public void onRoute2Pressed() {
         selectedRoute = selectedRace.getRoutes().get(1);
     }
 
-    //Button that allows the player to start the race
+    /**
+     * Button that allows the player to start the race
+     * @throws IOException throws an exception if something goes wrong
+     */
     @FXML
     public void onStartRacePressed() throws IOException {
         if (selectedRace == null || selectedRoute == null) {
@@ -100,7 +130,23 @@ public class RaceSelectionScreen {
         stage.setScene(new Scene(root));
     }
 
-    //Shows an alert if the player hasn't selected a race and a route
+    /**
+     * Button that allows the player to go back to garage
+     * @throws IOException throws exception is something goes wrong
+     */
+    @FXML
+    public void onRaceSelectionBackPressed() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/garage.fxml"));
+        Parent root = loader.load();
+        GarageScreen controller = loader.getController();
+        controller.init(game, stage);
+        stage.setScene(new Scene(root));
+    }
+
+    /**
+     * Shows an alert if the player hasn't selected a race and a route
+     * @param msg alert message
+     */
     private void showAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");

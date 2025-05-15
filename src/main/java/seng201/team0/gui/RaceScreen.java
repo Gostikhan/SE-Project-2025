@@ -14,8 +14,11 @@ import seng201.team0.services.GameEnvironment;
 
 import java.io.IOException;
 import java.util.Random;
-//Controller for the Race Screen
-//Player can start race, see the current race status, see the race result and their prizing and make race decisions
+
+/**
+ * Controller for the Race Screen
+ * Player can start race, see the current race status, see the race result and their prizing and make race decisions
+ */
 public class RaceScreen {
 
     @FXML private Label statusLabel; //Label for the race status
@@ -37,7 +40,13 @@ public class RaceScreen {
     private boolean playerRefueled = false; //Variable that tells the game whether a player has refueled
     private final Random random = new Random(); //Random number generator for events
 
-    //Loads the Race Screen
+    /**
+     * Loads the Race Screen
+     * @param game
+     * @param stage
+     * @param race
+     * @param route
+     */
     public void init(GameEnvironment game, Stage stage, Race race, RaceRoute route) {
         this.game = game;
         this.stage = stage;
@@ -55,14 +64,19 @@ public class RaceScreen {
         retire.setVisible(false);
     }
 
-    //Button that allows the player to start the race
+    /**
+     * Button that allows the player to start the race
+     */
     @FXML
     public void onStartRacePressed() {
         statusLabel.setText("Reached fuel stop.");
         refuel.setDisable(false);
         dontRefuel.setDisable(false);
     }
-    //Button that allows the player to refuel
+
+    /**
+     * Button that allows the player to refuel
+     */
     @FXML
     public void onRefuelPressed() {
         playerRefueled = true;
@@ -70,7 +84,10 @@ public class RaceScreen {
         dontRefuel.setDisable(true);
         runRace();
     }
-    //Button that allows a player to skip refueling
+
+    /**
+     * Button that allows a player to skip refueling
+     */
     @FXML
     public void onDontRefuelPressed() {
         playerRefueled = false;
@@ -79,7 +96,9 @@ public class RaceScreen {
         runRace();
     }
 
-    //Race logic of the game, handles events, allows the player to play the game
+    /**
+     * Race logic of the game, handles events, allows the player to play the game
+     */
     private void runRace() {
         if (!hasEnoughFuel()) {
             eventLabel.setText("You ran out of fuel before the next stop!");
@@ -123,7 +142,10 @@ public class RaceScreen {
         finishRace(finalTime);
     }
 
-    //Checks if the player has enough fuel to race
+    /**
+     * Checks if the player has enough fuel to race
+     * @return returns True or False
+     */
     private boolean hasEnoughFuel() {
         double maxPerTank = car.getFuelEconomy();
         int fuelStops = route.getFuelStops();
@@ -131,7 +153,10 @@ public class RaceScreen {
         return maxPerTank >= segment;
     }
 
-    //Checks if the player has a breakdown
+    /**
+     * Checks if the player has a breakdown
+     * @return returns True or False
+     */
     private boolean checkBreakdown() {
         double reliability = car.getReliability();
         double chance = reliability >= 90 ? 0.10 : reliability >= 75 ? 0.25 : 0.50;
@@ -139,8 +164,10 @@ public class RaceScreen {
         return random.nextDouble() < chance;
     }
 
-    //What happens when the repair button is pressed
-    //Hides this button if the car hasn't broken down
+    /**
+     * What happens when the repair button is pressed
+     * Hides this button if the car hasn't broken down
+     */
     @FXML
     public void onRepairPressed() {
         repair.setVisible(false);
@@ -149,8 +176,11 @@ public class RaceScreen {
         double repairPenalty = 2.0;
         finishRace(repairPenalty);
     }
-    //What happens when the retire button is pressed
-    //Hides this button if the car hasn't broken down
+
+    /**
+     *  What happens when the retire button is pressed
+     *  Hides this button if the car hasn't broken down
+     */
     @FXML
     public void onRetirePressed() {
         repair.setVisible(false);
@@ -163,7 +193,10 @@ public class RaceScreen {
         game.incrementRacesCompleted();
     }
 
-    //Handles the end of the race, updates placing, prize money and race count
+    /**
+     * Handles the end of the race, updates placing, prize money and race count
+     * @param additionalTime additional time of the race
+     */
     private void finishRace(double additionalTime) {
         double baseTime = route.getRaceDistance() / (double) car.getSpeed();
         double handlingPenalty = (100 - car.getHandling()) * 0.01;
@@ -179,7 +212,9 @@ public class RaceScreen {
         game.incrementRacesCompleted();
     }
 
-    //What happens when the end race button is pressed
+    /**
+     * What happens when the end race button is pressed
+     */
     @FXML
     public void onEndRacePressed() {
         try {

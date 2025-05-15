@@ -6,20 +6,29 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seng201.team0.services.GameEnvironment;
-//Controller for the Start screen
-//Allows the player to start or exit the game
+
+/**
+ * Controller for the Start screen
+ * Allows the player to start or exit the game
+ */
 public class StartScreen {
 
     private Stage stage;
     private GameEnvironment game;
 
-    //Loads the start screen
+    /**
+     * Loads the start screen
+     * @param stage
+     * @param game
+     */
     public void init(Stage stage, GameEnvironment game) {
         this.stage = stage;
         this.game = game;
     }
 
-    //Button that allows the player to start the game
+    /**
+     * Button that allows the player to start the game
+     */
     @FXML
     public void onStartPressed() {
         try {
@@ -33,14 +42,18 @@ public class StartScreen {
         }
     }
 
-    //Button that allows the player to see the options(options is not implemented yet)
+    /**
+     * Button that allows the player to see the options(options is not implemented yet)
+     */
     @FXML
     public void onOptionsPressed() {
         System.out.println("Options is pressed");
 
     }
 
-    //Button that allows the player to exit the game
+    /**
+     * //Button that allows the player to exit the game
+     */
     @FXML
     public void onExitPressed() {
         System.exit(0);

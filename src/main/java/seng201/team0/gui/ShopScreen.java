@@ -9,61 +9,86 @@ import seng201.team0.services.GameEnvironment;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import java.io.IOException;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+//Controller for the Shop screen
+//Allows the player to buy and/or sell tuning parts and cars
 public class ShopScreen {
-    @FXML private Label balanceLabel;
-    @FXML private Label speedStat;
-    @FXML private Label handlingStat;
-    @FXML private Label reliabilityStat;
-    @FXML private Label fuelEconomyStat;
-    @FXML private Label priceStat;
-    @FXML private Label staisticLabel;
+    @FXML private Label balanceLabel; //Label for the player's balance
+    @FXML private Label speedStat; //Label for the speed of a selected car
+    @FXML private Label handlingStat; //Label for the handling of a selected car
+    @FXML private Label reliabilityStat; //Label for the reliability of a selected car
+    @FXML private Label fuelEconomyStat; //Label for the fuel economy of a selected car
+    @FXML private Label priceStat; //Label for the price of a selected car
+    @FXML private Label staisticLabel; //Label to show the statistic that a tuning part upgrades
 
     private GameEnvironment game;
     private Car selectedCar;
     private CarParts selectedPart;
     private Stage stage;
+    private List<Car> shopCars;
+    private List<CarParts> shopParts;
 
-    //Loading The Shop Screen
+    //Loads the shop screen
     public void init(GameEnvironment game, Stage stage) {
         this.game = game;
         this.stage = stage;
         updateBalance();
+        shopCars = new ArrayList<>(game.getAvailableCars());
+        shopParts = new ArrayList<>(game.getAvailableParts());
+        Collections.shuffle(shopCars);
+        Collections.shuffle(shopParts);
+        shopCars = shopCars.subList(0, Math.min(3, shopCars.size()));
+        shopParts = shopParts.subList(0, Math.min(3, shopParts.size()));
     }
+
+    //Updates the balance that the player can see on screen
     private void updateBalance() {
         balanceLabel.setText("$" + game.getBalance());
     }
 
-    //Tuning Parts
+    //Shows the selected tuning part's upgrade stat
     private void showPartStat(CarParts part) {
         selectedPart = part;
         staisticLabel.setText(part.getStatBoostName() + ": +1");
     }
+
+    //Button that shows tuning part 1's stats when it is pressed
     @FXML
     public void onTuningPart1Pressed() {
-        showPartStat(game.getAvailableParts().get(0));
+        showPartStat(shopParts.get(0));
     }
+    //Button that shows tuning part 2's stats when it is pressed
     @FXML
     public void onTuningPart2Pressed() {
-        showPartStat(game.getAvailableParts().get(1));
+        showPartStat(shopParts.get(1));
     }
+    //Button that shows tuning part 3's stats when it is pressed
     @FXML
     public void onTuningPart3Pressed() {
-        showPartStat(game.getAvailableParts().get(2));
+        showPartStat(shopParts.get(2));
     }
+
+    //Button that shows owned tuning part 1's stats when it is pressed
     @FXML
     public void onOwnedTuningPart1Pressed() {
         showPartStat(game.getUnequippedParts().get(0));
     }
+    //Button that shows owned tuning part 12's stats when it is pressed
     @FXML
     public void onOwnedTuningPart2Pressed() {
         showPartStat(game.getUnequippedParts().get(1));
     }
+    //Button that shows owned tuning part 3's stats when it is pressed
     @FXML
     public void onOwnedTuningPart3Pressed() {
         showPartStat(game.getUnequippedParts().get(2));
     }
+
+    //Button that allows a player to purchase the selected tuning part
     @FXML
     public void onPurchasePartPressed() {
         if (selectedPart == null) {
@@ -76,6 +101,8 @@ public class ShopScreen {
             updateBalance();
         }
     }
+
+    //Button that allows the player to sell the selected tuning part
     @FXML
     public void onSellPartPressed() {
         if (selectedPart == null || !game.canSellPart(selectedPart)) {
@@ -87,47 +114,59 @@ public class ShopScreen {
         }
     }
 
-    //Cars
+    //Shows the selected car's stats to the player
     private void showCarStats(Car car) {
         selectedCar = car;
-        speedStat.setText("Speed: " + car.getSpeed());
+        speedStat.setText("Speed: " + car.getSpeed() + " km/h");
         handlingStat.setText("Handling: " + car.getHandling());
-        reliabilityStat.setText("Reliability: " + car.getReliability());
-        fuelEconomyStat.setText("Fuel Economy: " + car.getFuelEconomy());
+        reliabilityStat.setText("Reliability: " + car.getReliability() + "%");
+        fuelEconomyStat.setText("Fuel Economy: " + car.getFuelEconomy() + " km");
         priceStat.setText("Price: $" + car.getCost());
     }
+
+    //Button that allows the player to select car 1
     @FXML
     public void onSaleCar1Pressed() {
-        showCarStats(game.getAvailableCars().get(0));
+        showCarStats(shopCars.get(0));
     }
+    //Button that allows the player to select car 2
     @FXML
     public void onSaleCar2Pressed() {
-        showCarStats(game.getAvailableCars().get(1));
+        showCarStats(shopCars.get(1));
     }
+    //Button that allows the player to select car 3
     @FXML
     public void onSaleCar3Pressed() {
-        showCarStats(game.getAvailableCars().get(2));
+        showCarStats(shopCars.get(2));
     }
+
+    //Button that allows the player to select owned car 1
     @FXML
     public void onOwnedCar1Pressed() {
         showCarStats(game.getOwnedCars().get(0));
     }
+    //Button that allows the player to select owned car 2
     @FXML
     public void onOwnedCar2Pressed() {
         showCarStats(game.getOwnedCars().get(1));
     }
+    //Button that allows the player to select owned car 3
     @FXML
     public void onOwnedCar3Pressed() {
         showCarStats(game.getOwnedCars().get(2));
     }
+    //Button that allows the player to select owned car 3
     @FXML
     public void onOwnedCar4Pressed() {
         showCarStats(game.getOwnedCars().get(3));
     }
+    //Button that allows the player to select owned car 3
     @FXML
     public void onOwnedCar5Pressed() {
         showCarStats(game.getOwnedCars().get(4));
     }
+
+    //Button that allows the payer to purchase the selected car
     @FXML
     public void onPurchaseCarPressed() {
         if (selectedCar == null) {
@@ -140,6 +179,8 @@ public class ShopScreen {
             updateBalance();
         }
     }
+
+    //Button that allows a player to sell the selected car
     @FXML
     public void onSellCarPressed() {
         if (selectedCar == null || !game.getOwnedCars().contains(selectedCar)) {
@@ -153,7 +194,7 @@ public class ShopScreen {
         }
     }
 
-    //Continue Button
+    //Button that allows the player to continue to the garage
     @FXML
     public void onShopContinuePressed() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/garage.fxml"));
@@ -163,13 +204,17 @@ public class ShopScreen {
         stage.setScene(new Scene(root));
     }
 
-    //Alert and Info
+    //Shows an alert if the player tries to sell a car or tuning part they can't
+    //Shows an error if the player doesn't own at least 1 car
+    //Shows an error if the player hasn't selected a tuning part or car
     private void showAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setContentText(msg);
         alert.showAndWait();
     }
+
+    //Information of any bought or sold part
     private void showInfo(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Info");

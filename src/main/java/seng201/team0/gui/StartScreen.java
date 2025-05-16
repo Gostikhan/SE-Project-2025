@@ -43,15 +43,6 @@ public class StartScreen {
     }
 
     /**
-     * Button that allows the player to see the options(options is not implemented yet)
-     */
-    @FXML
-    public void onOptionsPressed() {
-        System.out.println("Options is pressed");
-
-    }
-
-    /**
      * //Button that allows the player to exit the game
      */
     @FXML

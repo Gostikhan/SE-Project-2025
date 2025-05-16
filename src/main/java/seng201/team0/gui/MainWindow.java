@@ -28,7 +28,7 @@ public class MainWindow extends Application {
         StartScreen controller = loader.getController();
         controller.init(primaryStage, new GameEnvironment());
         primaryStage.setTitle("Gear Shift!");
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 650, 400);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();

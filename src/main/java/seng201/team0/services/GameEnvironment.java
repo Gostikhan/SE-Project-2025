@@ -9,8 +9,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-//The environment that the game runs in,
-// Keeps track of everything and generates, races, parts and cars when the game is started
+
+/**
+ * The environment that the game runs in,
+ * Keeps track of everything and generates, races, parts and cars when the game is started
+ */
+
 public class GameEnvironment {
     private String playerName; //Variable for the player's name
     private int seasonLength; //Variable for the season length
@@ -29,7 +33,9 @@ public class GameEnvironment {
     private int racesCompleted = 0; //Amount of races completed
     private Car selectedRacingCar; //The selected car for racing
 
-    //Runs when the game starts, sets balance, generates cars, parts and races
+    /**
+     * Runs when the game starts, sets balance, generates cars, parts and races
+     */
     public GameEnvironment() {
         balance = 0;
         generateCars();
@@ -38,7 +44,9 @@ public class GameEnvironment {
         refreshCurrentRaces();
     }
 
-    //Generates cars
+    /**
+     * Generates cars
+     */
     private void generateCars() {
         int[] handlingValues = {70, 80, 90};
         int[] speedValues = {85, 100, 115};
@@ -61,7 +69,9 @@ public class GameEnvironment {
         Collections.shuffle(availableCars);
     }
 
-    //Generates tuning parts
+    /**
+     * Generates tuning parts
+     */
     private void generateParts() {
         String[] stats = {"Speed", "Handling", "Reliability", "Fuel Economy"};
         for (int i = 1; i <= 25; i++) {
@@ -73,7 +83,9 @@ public class GameEnvironment {
         Collections.shuffle(unequippedParts);
     }
 
-    //Generates races
+    /**
+     * Generates races
+     */
     public void generateRaces() {
         allRaces.clear();
         for (int i = 1; i <= 15; i++) {
@@ -84,7 +96,9 @@ public class GameEnvironment {
         }
     }
 
-    //Shows the player new races to choose from
+    /**
+     * Shows the player new races to choose from
+     */
     public void refreshCurrentRaces() {
         currentRaces.clear();
         List<Race> shuffled = new ArrayList<>(allRaces);
@@ -94,27 +108,50 @@ public class GameEnvironment {
         }
     }
 
-    //Gets the currently selected race
+    /**
+     * Gets the currently selected race
+     * @return returns current Races
+     */
     public List<Race> getCurrentRaces() {
         return currentRaces;
     }
-    //Sets the player's name
+
+    /**
+     * Sets the player's name
+     * @param name sets player's name
+     */
     public void setPlayerName(String name) {
         this.playerName = name;
     }
-    //Gets the player's name
+
+    /**
+     * Gets the player's name
+     * @return returns player's name
+     */
     public String getPlayerName() {
         return playerName;
     }
-    //Sets the season length
+
+    /**
+     * Sets the season length
+     * @param length season length
+     */
     public void setSeasonLength(int length) {
         this.seasonLength = length;
     }
-    //Gets the season length
+
+    /**
+     * Gets the season length
+     * @return season length
+     */
     public int getSeasonLength() {
         return seasonLength;
     }
-    //Sets the difficulty
+
+    /**
+     * Sets the difficulty
+     * @param difficulty the difficulty in the game, "Easy" and "Hard"
+     */
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
         if (difficulty.equals("Easy")) {
@@ -123,38 +160,71 @@ public class GameEnvironment {
             this.balance = 200000;
         }
     }
-    //Gets the difficulty
+
+    /**
+     * Gets the difficulty
+     * @return returns difficulty of the game
+     */
     public String getDifficulty() {
         return difficulty;
     }
-    //Gets the player's balance
+
+    /**
+     * Gets the player's balance
+     * @return returns player's balance
+     */
     public int getBalance() {
         return balance;
     }
-    //Adds to the players balance
+
+    /**
+     * Adds to the players balance
+     * @param amount $ to players balance
+     */
     public void addBalance(int amount) {
         this.balance += amount;
     }
-    //Gets a list of the player's owned cars
+
+    /**
+     * Gets a list of the player's owned cars
+     * @return returns player's owned cars
+     */
     public List<Car> getOwnedCars() {
         return ownedCars;
     }
-    //Whether a player can purchase the selected car
+
+    /**
+     * Whether a player can purchase the selected car
+     * @param car gets Car class details
+     * @return returns True or False
+     */
     public boolean canPurchase(Car car) {
         return ownedCars.size() < 5 && balance >= car.getCost();
     }
-    //Lets the player purchase the selected car
+
+    /**
+     * Lets the player purchase the selected car
+     * @param car Car class details
+     */
     public void purchaseCar(Car car) {
         if (canPurchase(car)) {
             balance -= car.getCost();
             ownedCars.add(car);
         }
     }
-    //Whether a player can sell the selected car
+
+    /**
+     * Whether a player can sell the selected car
+     * @return returns True or False
+     */
     public boolean canSellCar() {
         return ownedCars.size() > 1;
     }
-    //Lets the player sell the selected car
+
+    /**
+     * Lets the player sell the selected car
+     * @param car Car class details
+     */
     public void sellCar(Car car) {
         if (ownedCars.contains(car) && canSellCar()) {
             balance += car.getSellPrice();
@@ -164,47 +234,88 @@ public class GameEnvironment {
             }
         }
     }
-    //Gets the available cars in the shop
+
+    /**
+     * Gets the available cars in the shop
+     * @return returns available cars
+     */
     public List<Car> getAvailableCars() {
         return availableCars;
     }
-    //Gets the available tuning parts in the shop
+
+    /**
+     * Gets the available tuning parts in the shop
+     * @return returns unequipped parts
+     */
     public List<CarParts> getUnequippedParts() {
         return unequippedParts;
     }
-    //Whether a player can purchase a tuning part
+
+    /**
+     * Whether a player can purchase a tuning part
+     * @param part Car parts class details
+     * @return returns True or False
+     */
     public boolean canPurchasePart(CarParts part) {
         return unequippedParts.size() < 3 && balance >= part.getCost();
     }
-    //Lets the player purchase a tuning part
+
+    /**
+     * Lets the player purchase a tuning part
+     * @param part Car parts class details
+     */
     public void purchasePart(CarParts part) {
         if (canPurchasePart(part)) {
             balance -= part.getCost();
             unequippedParts.add(part);
         }
     }
-    //Gets a list of available tuning parts in the shop
+
+    /**
+     * Gets a list of available tuning parts in the shop
+     * @return returns parts
+     */
     public List<CarParts> getAvailableParts() {
         List<CarParts> parts = new ArrayList<>(unequippedParts);
         Collections.shuffle(parts);
         return parts.subList(0, Math.min(3, parts.size()));
     }
-    //Whether a player can sell a tuning part
+
+    /**
+     * Whether a player can sell a tuning part
+     * @param part Car parts class details
+     * @return returns True or False
+     */
     public boolean canSellPart(CarParts part) {
         return unequippedParts.contains(part);
     }
-    //Allows the player to sell a tuning part
+
+    /**
+     * Allows the player to sell a tuning part
+     * @param part Car parts class details
+     */
     public void sellPart(CarParts part) {
         if (canSellPart(part)) {
             balance += part.getSellPrice();
             unequippedParts.remove(part);
         }
     }
-    //Whether a player can install a tuning part
+
+    /**
+     * Whether a player can install a tuning part
+     * @param part Car parts class details
+     * @param car Car c;ass details
+     * @return returns True or False
+     */
     public boolean canInstallPart(CarParts part, Car car) {
         return unequippedParts.contains(part) && ownedCars.contains(car);
     }
-    //Allows the player to install a tuning part
+
+    /**
+     * Allows the player to install a tuning part
+     * @param part Car parts class details
+     * @param car Car c;ass details
+     */
     public void installPartToCar(CarParts part, Car car) {
         if (canInstallPart(part, car)) {
             car.applyUpgrade(part);
@@ -212,45 +323,86 @@ public class GameEnvironment {
             unequippedParts.remove(part);
         }
     }
-    //Sets the selected car for racing
+
+    /**
+     * Sets the selected car for racing
+     * @param car Car class details
+     */
     public void setSelectedRacingCar(Car car) {
         if (ownedCars.contains(car)) {
             this.selectedRacingCar = car;
         }
     }
-    //Gets the selected car for racing
+
+    /**
+     * Gets the selected car for racing
+     * @return returns selected racing car
+     */
     public Car getSelectedRacingCar() {
         return selectedRacingCar;
     }
-    //Get the current car that is selected for racing
+
+    /**
+     * Get the current car that is selected for racing
+     * @return returns selected racing car
+     */
     public Car getRacingCar() {
         return getSelectedRacingCar();
     }
-    //Whether a player owns a car
+
+    /**
+     * Whether a player owns a car
+     * @param car Car class details
+     * @return returns True or False
+     */
     public boolean ownsCar(Car car) {
         return ownedCars.contains(car);
     }
-    //Whether a player owns a tuning part
+
+    /**
+     * Whether a player owns a tuning part
+     * @param part Car parts class details
+     * @return returns True or False
+     */
     public boolean ownsPart(CarParts part) {
         return unequippedParts.contains(part);
     }
-    //Increases the amount of completed races by 1
+
+    /**
+     * Increases the amount of completed races by 1
+     */
     public void incrementRacesCompleted() {
         racesCompleted++;
     }
-    //Gets the amount of completed races
+
+    /**
+     * Gets the amount of completed races
+     * @return returns completed races
+     */
     public int getRacesCompleted() {
         return racesCompleted;
     }
-    //Checks if the season is over
+
+    /**
+     * Checks if the season is over
+     * @return returns True or False
+     */
     public boolean isSeasonOver() {
         return racesCompleted >= seasonLength;
     }
-    //Records the player's position in a race
+
+    /**
+     * Records the player's position in a race
+     * @param place players place
+     */
     public void recordRacePlacing(int place) {
         racePlacings.add(place);
     }
-    //Gets the average placing from a player throughout the season
+
+    /**
+     * Gets the average placing from a player throughout the season
+     * @return returns average placing from a player
+     */
     public double getAveragePlacing() {
         if (racePlacings.isEmpty()) return 0;
         return racePlacings.stream().mapToInt(i -> i).average().orElse(0.0);

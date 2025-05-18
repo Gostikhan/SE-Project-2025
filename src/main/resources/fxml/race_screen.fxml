@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -22,6 +24,14 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <GridPane.margin>
+            <Insets top="370.0" />
+         </GridPane.margin>
+         <image>
+            <Image url="@../images/CyanBackground.png" />
+         </image>
+      </ImageView>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Race Screen" GridPane.columnIndex="1">
             <font>
                 <Font name="Rockwell" size="24.0" />

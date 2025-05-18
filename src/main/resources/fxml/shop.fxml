@@ -23,6 +23,14 @@
         <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="190.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
+      <ImageView fitHeight="439.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <GridPane.margin>
+            <Insets top="375.0" />
+         </GridPane.margin>
+         <image>
+            <Image url="@../images/CyanBackground.png" />
+         </image>
+      </ImageView>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance:" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="18.0" />
@@ -79,7 +87,7 @@
                 <Insets left="30.0" top="60.0" />
             </GridPane.margin>
         </Text>
-        <Label fx:id="staisticLabel" prefHeight="20.0" prefWidth="93.0" text="Statistic:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <Label fx:id="staisticLabel" prefHeight="20.0" prefWidth="137.0" text="Statistic:" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="10.0" top="60.0" />
             </GridPane.margin>
@@ -121,7 +129,7 @@
         </Button>
         <Button fx:id="purchasePart" mnemonicParsing="false" onAction="#onPurchasePartPressed" text="Purchase" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
-                <Insets left="120.0" top="60.0" />
+                <Insets left="150.0" top="60.0" />
             </GridPane.margin>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -129,7 +137,7 @@
         </Button>
         <Button fx:id="sellPart" mnemonicParsing="false" onAction="#onSellPartPressed" text="Sell" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
-                <Insets left="190.0" top="60.0" />
+                <Insets left="220.0" top="60.0" />
             </GridPane.margin>
             <padding>
                 <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />

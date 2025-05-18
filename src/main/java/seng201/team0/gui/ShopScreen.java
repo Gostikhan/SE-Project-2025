@@ -269,20 +269,6 @@ public class ShopScreen {
     }
 
     /**
-     * Button that allows player to go back to the SetUp screen
-     * @throws IOException throws an exception if something goes wrong
-     */
-    @FXML
-    public void onShopBackPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/setup_screen.fxml"));
-        Parent root = loader.load();
-        SetupScreen controller = loader.getController();
-        controller.init(game, stage);
-        stage.setScene(new Scene(root));
-    }
-
-
-    /**
      * Shows an alert if the player tries to sell a car or tuning part they can't
      * Show an error if the player doesn't own at least 1 car
      * Shows an error if the player hasn't selected a tuning part or car

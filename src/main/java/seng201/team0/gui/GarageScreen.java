@@ -203,7 +203,7 @@ public class GarageScreen {
      */
     @FXML
     public void onGarageContinuePressed() throws IOException {
-        if (selected == null){
+        if (game.getRacingCar() == null){
             showAlert("Please select a car to continue");
             return;
 

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -69,6 +70,10 @@ public class RaceScreen {
      */
     @FXML
     public void onStartRacePressed() {
+        if (game.isSeasonOver()) {
+            showAlert("Season is already over!");
+            return;
+        }
         statusLabel.setText("Reached fuel stop.");
         refuel.setDisable(false);
         dontRefuel.setDisable(false);
@@ -210,7 +215,19 @@ public class RaceScreen {
         game.addBalance(prize);
         game.recordRacePlacing(place);
         game.incrementRacesCompleted();
+        if (game.isSeasonOver()) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/summary_screen.fxml"));
+                Parent root = loader.load();
+                SummaryScreen controller = loader.getController();
+                controller.init(game, stage);
+                stage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 
     /**
      * What happens when the end race button is pressed
@@ -235,5 +252,11 @@ public class RaceScreen {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void showAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

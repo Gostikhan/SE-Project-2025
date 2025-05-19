@@ -14,7 +14,7 @@ public class CarParts implements Purchase {
      * @param partName Name of the car's part
      * @param partCost Cost of the car's part
      * @param statBoostName Boost Name for the part
-     * @param partDescription the desciption of the car part
+     * @param partDescription the description of the car part
      */
     public CarParts(String partName, int partCost, String statBoostName, String partDescription) {
         this.partName = partName;

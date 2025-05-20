@@ -1,7 +1,6 @@
-# SENG201 Template Project Overview
-Welcome to the template project for SENG201 which you will transform into your own.
-This README file includes some useful information to help you get started.
-However, we expect that this README becomes your own.
+# SENG201 Project Overview
+Welcome to the SENG201 GEAR SHIFT project!
+This README file includes some useful information.
 
 ## Notes
 Remember you are required to commit your code to the **main** branch of your repository before the deadline.
@@ -12,7 +11,7 @@ This can be done by renaming any instance of `team0` with `team<x>` (where x is 
 IntelliJ can help with this using `ctrl+shift+f` to find all instances of a string, and `ctrl+shift+r` to replace them, though make sure to change the package names as well.
 
 ## Authors
-- SENG201 Teaching team
+- SENG201 Teaching team, Georgy Stikhanovskiy and Jack McGlade
 
 ## Prerequisites
 - JDK >= 21 [click here to get the latest stable OpenJDK release (as of writing this README)](https://jdk.java.net/21/)
@@ -56,3 +55,26 @@ IntelliJ has built-in support for Gradle. To import your project:
 2. Test results should be printed to the command line
 
 **Note:** *This Jar is **NOT** cross-platform, so you **must** build the jar you submit on Linux.* 
+
+
+## Project Overview
+Gear Shift is a cross-country racing game designed by two SENG201 students. In this game, you as a player, get to buy racing cars, install parts on the cars, complete in variety of races with different routes, earning prize money and more!
+
+## Gameplay
+Gear Shift gets player to enter their name at the start, which must be 3-15 characters long and no special characters.
+
+The player gets to choose season length (selection must be 5 to 15 races).
+
+The user can purchase and can manage their bought racing cars, each racing car have the following: speed, handling, reliability, fuel economy and cost.
+
+Also, there are difficulty levels such as "Easy" and "Hard" that the player can choose from the start, and it will impact the gameplay.
+
+Race System: There are 3 race options that the player can choose from, each one of them have different prize money, number of racers terrain etc. Also, the user must select a race route for each race. Each time, there will be a chance for a car to break down, forcing the player to retire.
+
+## Endgame Conditions
+In order for the player to end the game, they must race all the number of seasons they have selected from the start.
+To win each season, the player must race until the end.
+
+## Image Sources
+All of our images for cars, background, buttons etc. All of them were created/traced using an app called "Pixel Brush" on Google Play Store
+Link: https://www.pixelbrush.app/

@@ -9,8 +9,9 @@ public class CarPartsTest {
     @Test
     public void testConstructor() {
         CarParts part = new CarParts("Part x", 2500, "Speed", "Boosts Speed by 1 Level");
-        assertEquals("Nitrous", part.getPartName());
-        assertEquals("Extra boost", part.getDescription());
+        assertEquals("Part x", part.getPartName());
+        assertEquals("Boosts Speed by 1 Level", part.getDescription());
+        assertEquals("Speed", part.getStatBoostName());
         assertEquals(2500, part.getCost());
     }
 }

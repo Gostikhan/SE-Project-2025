@@ -15,7 +15,7 @@ public class RaceTest {
         Race race = new Race(5, 3, 20000);
         assertEquals(5, race.getHours());
         assertEquals(20000, race.getPrizeMoney());
-        assertEquals(1, race.getRoutes().size());
+        assertEquals(100, route1.getRaceDistance());
         assertEquals(3, race.getAiEntries());
     }
 }

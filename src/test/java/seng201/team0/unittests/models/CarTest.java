@@ -22,7 +22,7 @@ public class CarTest {
         Assertions.assertEquals(80, car.getHandling());
         Assertions.assertEquals(90, car.getReliability());
         Assertions.assertEquals(400, car.getFuelEconomy());
-        assertEquals(30000, car.getSellPrice());
+        assertEquals(30000, car.getCost());
         assertTrue(car.getInstalledParts().isEmpty());
     }
 

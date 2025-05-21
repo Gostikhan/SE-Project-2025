@@ -14,5 +14,10 @@ public class CarPartsTest {
         assertEquals("Speed", part.getStatBoostName());
         assertEquals(2500, part.getCost());
     }
+    @Test
+    public void testSellPrice(){
+        CarParts part = new CarParts("Part x", 2000, "Speed", "Boosts Speed by 1 Level");
+        assertEquals(1000, part.getSellPrice());
+    }
 }
 

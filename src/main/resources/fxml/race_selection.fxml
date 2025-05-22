@@ -5,13 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RaceSelectionScreen">
+<GridPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RaceSelectionScreen">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -24,6 +25,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
+      <AnchorPane prefHeight="161.0" prefWidth="331.0" GridPane.columnSpan="3" GridPane.rowSpan="4" />
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <GridPane.margin>
             <Insets top="370.0" />
@@ -104,7 +106,7 @@
                 <Insets left="10.0" />
             </GridPane.margin>
         </Text>
-        <Label fx:id="durationLabel" text="Duration" GridPane.rowIndex="3">
+        <Label fx:id="durationLabel" prefHeight="20.0" prefWidth="62.0" text="Duration" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="14.0" />
             </font>
@@ -128,7 +130,7 @@
                 <Insets bottom="130.0" left="100.0" />
             </GridPane.margin>
         </Label>
-        <Label fx:id="route1Label" text="Route 1" GridPane.rowIndex="3">
+        <Label fx:id="route1Label" prefHeight="20.0" prefWidth="406.0" text="Route 1" GridPane.columnSpan="3" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="14.0" />
             </font>
@@ -136,7 +138,7 @@
                 <Insets left="100.0" top="40.0" />
             </GridPane.margin>
         </Label>
-        <Label fx:id="route2Label" text="Route 2" GridPane.rowIndex="3">
+        <Label fx:id="route2Label" prefHeight="20.0" prefWidth="381.0" text="Route 2" GridPane.columnSpan="3" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="14.0" />
             </font>

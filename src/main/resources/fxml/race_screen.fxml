@@ -5,17 +5,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RaceScreen">
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RaceScreen">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="10.0" prefWidth="253.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="0.0" prefWidth="197.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="347.0" minWidth="10.0" prefWidth="150.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -24,6 +26,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
+      <AnchorPane prefHeight="400.0" prefWidth="248.0" GridPane.rowSpan="4" />
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <GridPane.margin>
             <Insets top="370.0" />
@@ -32,12 +35,12 @@
             <Image url="@../images/CyanBackground.png" />
          </image>
       </ImageView>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Race Screen" GridPane.columnIndex="1">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Race Screen" wrappingWidth="139.20001220703125" GridPane.columnIndex="1">
             <font>
                 <Font name="Rockwell" size="24.0" />
             </font>
             <GridPane.margin>
-                <Insets left="30.0" top="10.0" />
+                <Insets left="-20.0" top="10.0" />
             </GridPane.margin>
         </Text>
         <Button fx:id="startRace" mnemonicParsing="false" onAction="#onStartRacePressed" text="Start Race" GridPane.rowIndex="2">
@@ -61,7 +64,7 @@
                 <Font name="Rockwell" size="14.0" />
             </font>
             <GridPane.margin>
-                <Insets left="60.0" />
+                <Insets left="30.0" />
             </GridPane.margin>
         </Button>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Race Details:" GridPane.rowIndex="3">
@@ -96,7 +99,7 @@
                 <Insets bottom="130.0" left="20.0" />
             </GridPane.margin>
         </Text>
-        <Label fx:id="statusLabel" text="Waitng to start" GridPane.columnSpan="2" GridPane.rowIndex="3">
+        <Label fx:id="statusLabel" alignment="TOP_LEFT" prefHeight="20.0" prefWidth="621.0" text="Waiting to start" GridPane.columnSpan="2" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="14.0" />
             </font>
@@ -104,7 +107,7 @@
                 <Insets bottom="210.0" left="100.0" />
             </GridPane.margin>
         </Label>
-        <Label fx:id="eventLabel" text="No event triggered yet" GridPane.columnSpan="2" GridPane.rowIndex="3">
+        <Label fx:id="eventLabel" prefHeight="20.0" prefWidth="352.0" text="No event triggered yet" GridPane.columnSpan="3" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="14.0" />
             </font>
@@ -112,7 +115,7 @@
                 <Insets bottom="170.0" left="100.0" />
             </GridPane.margin>
         </Label>
-        <Label fx:id="positionLabel" text="Position" GridPane.rowIndex="3">
+        <Label fx:id="positionLabel" prefHeight="20.0" prefWidth="317.0" text="Position" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="14.0" />
             </font>
@@ -120,7 +123,7 @@
                 <Insets bottom="130.0" left="100.0" />
             </GridPane.margin>
         </Label>
-        <Button fx:id="endRace" mnemonicParsing="false" onAction="#onEndRacePressed" text="End Race" GridPane.columnIndex="2" GridPane.rowIndex="3">
+        <Button fx:id="endRace" mnemonicParsing="false" onAction="#onEndRacePressed" prefWidth="117.0" text="End Race" GridPane.columnIndex="2" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="18.0" />
             </font>
@@ -144,7 +147,7 @@
                 <Insets bottom="50.0" left="20.0" />
             </GridPane.margin>
         </Text>
-        <Label fx:id="prizeLabel" text="Prize" GridPane.rowIndex="3">
+        <Label fx:id="prizeLabel" prefHeight="20.0" prefWidth="235.0" text="Prize" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="14.0" />
             </font>
@@ -152,7 +155,7 @@
                 <Insets bottom="90.0" left="100.0" />
             </GridPane.margin>
         </Label>
-        <Label fx:id="timeLabel" text="Time" GridPane.rowIndex="3">
+        <Label fx:id="timeLabel" prefHeight="20.0" prefWidth="208.0" text="Time" GridPane.rowIndex="3">
             <font>
                 <Font name="Rockwell" size="14.0" />
             </font>

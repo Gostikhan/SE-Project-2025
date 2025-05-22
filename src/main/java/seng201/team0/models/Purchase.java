@@ -7,6 +7,4 @@ public interface Purchase {
     int getCost();
     int getSellPrice();
     String getDescription();
-
-
 }

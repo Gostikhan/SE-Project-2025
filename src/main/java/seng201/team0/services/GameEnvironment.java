@@ -24,7 +24,7 @@ public class GameEnvironment {
     private final List<Car> ownedCars = new ArrayList<>(); //List of owned cars
     private final List<CarParts> unequippedParts = new ArrayList<>(); //List of tuning parts
     private final List<Car> availableCars = new ArrayList<>(); //List of available cars
-
+    private final List<CarParts> ownedParts = new ArrayList<>();
     private final List<Race> allRaces = new ArrayList<>(); //List of races
     private final List<Race> currentRaces = new ArrayList<>(); //List of current races that the player can choose from
     private final List<Integer> racePlacings = new ArrayList<>(); //List of the all the player's placings
@@ -257,7 +257,7 @@ public class GameEnvironment {
      * @return returns True or False
      */
     public boolean canPurchasePart(CarParts part) {
-        return unequippedParts.size() < 3 && balance >= part.getCost();
+        return unequippedParts.contains(part) && ownedParts.size() < 3 && balance >= part.getCost();
     }
 
     /**
@@ -267,7 +267,8 @@ public class GameEnvironment {
     public void purchasePart(CarParts part) {
         if (canPurchasePart(part)) {
             balance -= part.getCost();
-            unequippedParts.add(part);
+            unequippedParts.remove(part);
+            ownedParts.add(part);
         }
     }
 
@@ -281,13 +282,17 @@ public class GameEnvironment {
         return parts.subList(0, Math.min(3, parts.size()));
     }
 
+    public List<CarParts> getOwnedParts() {
+        return ownedParts;
+    }
+
     /**
      * Whether a player can sell a tuning part
      * @param part Car parts class details
      * @return returns True or False
      */
     public boolean canSellPart(CarParts part) {
-        return unequippedParts.contains(part);
+        return ownedParts.contains(part);
     }
 
     /**
@@ -297,7 +302,8 @@ public class GameEnvironment {
     public void sellPart(CarParts part) {
         if (canSellPart(part)) {
             balance += part.getSellPrice();
-            unequippedParts.remove(part);
+            ownedParts.remove(part);
+            unequippedParts.add(part);
         }
     }
 
@@ -308,7 +314,7 @@ public class GameEnvironment {
      * @return returns True or False
      */
     public boolean canInstallPart(CarParts part, Car car) {
-        return unequippedParts.contains(part) && ownedCars.contains(car);
+        return ownedParts.contains(part) && ownedCars.contains(car);
     }
 
     /**
@@ -320,7 +326,7 @@ public class GameEnvironment {
         if (canInstallPart(part, car)) {
             car.applyUpgrade(part);
             car.increaseValue(part.getCost() / 2);
-            unequippedParts.remove(part);
+            ownedParts.remove(part);
         }
     }
 

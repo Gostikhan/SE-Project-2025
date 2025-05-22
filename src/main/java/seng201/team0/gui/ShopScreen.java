@@ -97,7 +97,7 @@ public class ShopScreen {
      */
     @FXML
     public void onOwnedTuningPart1Pressed() {
-        showPartStat(game.getUnequippedParts().get(0));
+        showPartStat(game.getOwnedParts().get(0));
     }
 
     /**
@@ -105,7 +105,7 @@ public class ShopScreen {
      */
     @FXML
     public void onOwnedTuningPart2Pressed() {
-        showPartStat(game.getUnequippedParts().get(1));
+        showPartStat(game.getOwnedParts().get(1));
     }
 
     /**
@@ -113,7 +113,7 @@ public class ShopScreen {
      */
     @FXML
     public void onOwnedTuningPart3Pressed() {
-        showPartStat(game.getUnequippedParts().get(2));
+        showPartStat(game.getOwnedParts().get(2));
     }
 
     /**

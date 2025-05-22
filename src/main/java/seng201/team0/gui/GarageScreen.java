@@ -131,7 +131,7 @@ public class GarageScreen {
      * @param index
      */
     private void selectPart(int index) {
-        List<CarParts> parts = game.getUnequippedParts();
+        List<CarParts> parts = game.getOwnedParts();
         if (index < parts.size()) {
             selectedPart = parts.get(index);
             staisticLabel.setText("Stat " + selectedPart.getStatBoostName());
@@ -167,10 +167,10 @@ public class GarageScreen {
      */
     @FXML
     public void onInstallPartPressed() {
-        if (selected != null && selectedPart != null && game.getUnequippedParts().contains(selectedPart)) {
+        if (selected != null && selectedPart != null && game.getOwnedParts().contains(selectedPart)) {
             selected.applyUpgrade(selectedPart);
             selected.increaseValue(selectedPart.getCost() / 2);
-            game.getUnequippedParts().remove(selectedPart);
+            game.getOwnedParts().remove(selectedPart);
             selectedPart = null;
             staisticLabel.setText("Statistic:");
             updateStats(selected);

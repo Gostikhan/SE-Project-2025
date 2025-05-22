@@ -37,16 +37,15 @@ public class RaceScreen {
     private Race race;
     private RaceRoute route;
     private Car car;
-
     private boolean playerRefueled = false; //Variable that tells the game whether a player has refueled
     private final Random random = new Random(); //Random number generator for events
 
     /**
      * Loads the Race Screen
-     * @param game
-     * @param stage
-     * @param race
-     * @param route
+     * @param game Game manager, manages the whole game
+     * @param stage Window application, used for scene transitions
+     * @param race Gets methods from race
+     * @param route Gets methods from route
      */
     public void init(GameEnvironment game, Stage stage, Race race, RaceRoute route) {
         this.game = game;
@@ -253,6 +252,11 @@ public class RaceScreen {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Shows an alert message
+     * @param msg message of the alert
+     */
     private void showAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");

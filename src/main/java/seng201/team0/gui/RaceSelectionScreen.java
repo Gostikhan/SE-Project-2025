@@ -63,7 +63,7 @@ public class RaceSelectionScreen {
 
     /**
      * Formats the route description
-     * @param route
+     * @param route gets methods from route
      * @return returns race details
      */
     private String formatRoute(RaceRoute route) {

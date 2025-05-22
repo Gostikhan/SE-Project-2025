@@ -18,8 +18,8 @@ public class StartScreen {
 
     /**
      * Loads the start screen
-     * @param stage
-     * @param game
+     * @param game Game manager, manages the whole game
+     * @param stage Window application, used for scene transitions
      */
     public void init(Stage stage, GameEnvironment game) {
         this.stage = stage;

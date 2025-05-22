@@ -36,9 +36,9 @@ public class ShopScreen {
     private List<CarParts> shopParts;
 
     /**
-     * Loads the shop screen
-     * @param game
-     * @param stage
+     *Loads the shop screen
+     *@param game Game manager, manages the whole game
+     *@param stage Window application, used for scene transitions
      */
     public void init(GameEnvironment game, Stage stage) {
         this.game = game;
@@ -148,7 +148,7 @@ public class ShopScreen {
 
     /**
      * Shows the selected car's stats to the player
-     * @param car
+     * @param car gets methods from Car class
      */
     private void showCarStats(Car car) {
         selectedCar = car;
@@ -283,7 +283,7 @@ public class ShopScreen {
 
     /**
      * Information of any bought or sold part
-     * @param msg
+     * @param msg content/message of the Information
      */
     private void showInfo(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

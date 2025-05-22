@@ -34,7 +34,7 @@ public class GameEnvironment {
     private Car selectedRacingCar; //The selected car for racing
 
     /**
-     * Runs when the game starts, sets balance, generates cars, parts and races
+     * Runs when the game starts, sets balance, generate cars, parts and races
      */
     public GameEnvironment() {
         balance = 0;
@@ -282,6 +282,10 @@ public class GameEnvironment {
         return parts.subList(0, Math.min(3, parts.size()));
     }
 
+    /**
+     * Owned parts that player have or will have
+     * @return returns the parts that player owns
+     */
     public List<CarParts> getOwnedParts() {
         return ownedParts;
     }

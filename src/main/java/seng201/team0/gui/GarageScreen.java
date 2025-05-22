@@ -35,8 +35,8 @@ public class GarageScreen {
 
     /**
      * Loads the garage screen
-     * @param game
-     * @param stage
+     * @param game Game manager, manages the whole game
+     * @param stage Window application, used for scene transitions
      */
     public void init(GameEnvironment game, Stage stage) {
         this.game = game;
@@ -47,7 +47,7 @@ public class GarageScreen {
 
     /**
      * Allows the player to select a new car
-     * @param index
+     * @param index reference cars by their position
      */
     private void selectCar(int index) {
         List<Car> owned = game.getOwnedCars();
@@ -128,7 +128,7 @@ public class GarageScreen {
 
     /**
      * Allows the player to select a tuning part
-     * @param index
+     * @param index reference cars by their position
      */
     private void selectPart(int index) {
         List<CarParts> parts = game.getOwnedParts();
@@ -174,7 +174,7 @@ public class GarageScreen {
             selectedPart = null;
             staisticLabel.setText("Statistic:");
             updateStats(selected);
-
+            showInfo("Installed a part");
         }
     }
 
@@ -235,6 +235,18 @@ public class GarageScreen {
     private void showAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
+    /**
+     *
+     * Info system
+     * @param msg message of the information
+     */
+    private void showInfo(String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Info");
         alert.setContentText(msg);
         alert.showAndWait();
     }

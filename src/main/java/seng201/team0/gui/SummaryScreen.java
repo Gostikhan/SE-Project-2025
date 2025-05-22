@@ -23,8 +23,8 @@ public class SummaryScreen {
 
     /**
      * Loads the summary screen
-     * @param game
-     * @param stage
+     *@param game Game manager, manages the whole game
+     *@param stage Window application, used for scene transitions
      */
     public void init(GameEnvironment game, Stage stage) {
         this.game = game;

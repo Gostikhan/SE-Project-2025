@@ -15,7 +15,7 @@ public class GameEnvironmentTest {
         assertEquals("Alena", game.getPlayerName());
     }
     @Test
-    public void testsetDifficulty() {
+    public void testSetDifficulty() {
         GameEnvironment game = new GameEnvironment();
         game.setDifficulty("Easy");
         assertEquals(250000, game.getBalance());
@@ -24,14 +24,14 @@ public class GameEnvironmentTest {
         assertEquals(200000, game.getBalance());
     }
     @Test
-    public void testcanPurchase() {
+    public void testCanPurchase() {
         GameEnvironment game = new GameEnvironment();
         game.setDifficulty("Hard");
         Car car = game.getAvailableCars().get(0);
         assertTrue(game.canPurchase(car));
     }
     @Test
-    public void testcanSellCar() {
+    public void testCanSellCar() {
         GameEnvironment game = new GameEnvironment();
         game.setDifficulty("Hard");
         Car car = game.getAvailableCars().get(0);
@@ -43,7 +43,7 @@ public class GameEnvironmentTest {
         assertTrue(game.canSellCar());
     }
     @Test
-    public void testcanSellPart(){
+    public void testCanSellPart(){
         GameEnvironment game = new GameEnvironment();
         game.setDifficulty("Easy");
         CarParts part = game.getAvailableParts().get(0);
@@ -51,7 +51,7 @@ public class GameEnvironmentTest {
         assertTrue(game.canSellPart(part));
     }
     @Test
-    public void testsetSeasonLength(){
+    public void testSetSeasonLength(){
         GameEnvironment game = new GameEnvironment();
         int seasonLength = 1;
         game.setSeasonLength(seasonLength);
@@ -90,7 +90,7 @@ public class GameEnvironmentTest {
         assertTrue(game.isSeasonOver());
     }
     @Test
-    public void testownsParts(){
+    public void testOwnsParts(){
         GameEnvironment game = new GameEnvironment();
         game.setDifficulty("Easy");
         CarParts part = game.getAvailableParts().get(0);
